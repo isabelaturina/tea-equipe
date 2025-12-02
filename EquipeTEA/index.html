@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Equipe TEA+</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body {
+      background: linear-gradient(120deg, #dff1ff, #b7dcff, #d1e9ff);
+      background-size: 300% 300%;
+      animation: gradientMove 12s ease infinite;
+      font-family: Inter, system-ui;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .drawer-bg { background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); }
+  </style>
+</head>
+<body class="min-h-screen relative">
+
+  <!-- SIDEBAR DESKTOP -->
+  <aside class="hidden md:flex w-52 bg-[#0b1e3a] text-white p-6 flex-col gap-3 fixed h-full shadow-xl">
+    <h2 class="text-lg font-semibold mb-2">Menu</h2>
+    <button class="filter-btn bg-blue-700 py-2 rounded-lg px-3 text-left" data-filter="geral">Geral</button>
+    <button class="filter-btn hover:bg-blue-600 py-2 rounded-lg px-3 text-left" data-filter="front">Front-end</button>
+    <button class="filter-btn hover:bg-blue-600 py-2 rounded-lg px-3 text-left" data-filter="back">Back-end</button>
+    <button class="filter-btn hover:bg-blue-600 py-2 rounded-lg px-3 text-left" data-filter="devops">DevOps</button>
+  </aside>
+
+  <!-- MOBILE NAV -->
+  <header class="md:hidden fixed top-0 left-0 w-full bg-[#0b1e3a] text-white p-4 flex justify-between items-center shadow-lg z-30">
+    <h1 class="font-bold text-xl">TEA+</h1>
+    <button id="openMenu" class="text-3xl">☰</button>
+  </header>
+
+  <!-- DRAWER MOBILE -->
+  <div id="drawer" class="fixed inset-0 hidden drawer-bg z-40">
+    <div class="w-64 bg-[#0b1e3a] h-full p-6 text-white shadow-2xl">
+      <div class="flex justify-between items-center mb-6">
+        <span class="text-lg font-semibold">Menu</span>
+        <button id="closeMenu" class="text-2xl">✕</button>
+      </div>
+      <button class="filter-btn bg-blue-700 w-full text-left py-2 rounded-lg px-3 mb-2" data-filter="geral">Geral</button>
+      <button class="filter-btn hover:bg-blue-600 w-full text-left py-2 rounded-lg px-3 mb-2" data-filter="front">Front-end</button>
+      <button class="filter-btn hover:bg-blue-600 w-full text-left py-2 rounded-lg px-3 mb-2" data-filter="back">Back-end</button>
+      <button class="filter-btn hover:bg-blue-600 w-full text-left py-2 rounded-lg px-3 mb-2" data-filter="devops">DevOps</button>
+    </div>
+  </div>
+
+  <main class="md:ml-60 p-6 pt-24 md:pt-10">
+    <h1 class="text-4xl font-extrabold mb-6 bg-gradient-to-r from-[#1982c4] via-[#8ac926] to-[#ff6bcb] text-transparent bg-clip-text">TEA+</h1>
+    <p class="text-[#0b1e3a] mb-8 max-w-xl">Unidas pela tecnologia, inclusão e inovação. Clique em uma integrante para ver contato e redes.</p>
+
+    <div id="teamGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- CARD TEMPLATE (com botão de verificação) -->
+      <!-- Exemplo aplicado ao primeiro card -->
+
+      <article class="card p-6 bg-white rounded-2xl border-2 cursor-pointer front relative"
+        data-name="Isabela" data-role="Front-end" data-linkedin="https://www.linkedin.com/in/isabela-turina?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" data-instagram="">
+        <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow-md font-medium">Tech Leader</span>
+        <img src="img/isabela.jpeg" class="w-40 h-40 object-cover mx-auto rounded-full mb-3">
+        <h3 class="text-xl font-semibold text-center text-[#023E8A]">Isabela</h3>
+        <p class="text-center text-blue-700">Front-end</p>
+      </article>
+
+      <article class="card p-6 bg-white rounded-2xl border-2 cursor-pointer front relative"
+        data-name="Mayara" data-role="Front-end" data-linkedin="https://www.linkedin.com/in/mayara-santana-784369391?utm_source=share_via&utm_content=profile&utm_medium=member_ios" data-instagram="https://www.instagram.com/mayawxw_?igsh=MXEzOGl4OHhpczF4Yw%3D%3D&utm_source=qr">
+        <img src="img/mayara.jpeg" class="w-40 h-40 object-cover mx-auto rounded-full mb-3">
+        <h3 class="text-xl font-semibold text-center text-[#023E8A]">Mayara</h3>
+        <p class="text-center text-blue-700">Front-end</p>
+      </article>
+
+      <article class="card p-6 bg-white rounded-2xl border-2 cursor-pointer back relative"
+        data-name="Maria Julia" data-role="Back-end" data-linkedin="https://www.linkedin.com/in/maria-julia-santos-22b305280?utm_source=share_via&utm_content=profile&utm_medium=member_android" data-instagram="https://www.instagram.com/majju.zx?igsh=OGV3NWt5dmNpN3Vu">
+        <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs px-3 py-1 rounded-full shadow-md font-medium">Tech Leader</span>
+        <img src="img/maria julia.jpeg" class="w-40 h-40 object-cover mx-auto rounded-full mb-3">
+        <h3 class="text-xl font-semibold text-center text-[#023E8A]">Maria Julia</h3>
+        <p class="text-center text-blue-700">Back-end</p>
+      </article>
+
+      <!-- Nicole com GitHub -->
+      <article class="card p-6 bg-white rounded-2xl border-2 cursor-pointer back relative"
+        data-name="Nicole Vitória" data-role="Back-end" data-linkedin="https://github.com/nicolevitoriaa" data-instagram="https://www.instagram.com/n.vitoriad?igsh=MXhhcTBqd2dkb3Vycw==">
+        <img src="img/nicole.jpeg" class="w-40 h-40 object-cover mx-auto rounded-full mb-3">
+        <h3 class="text-xl font-semibold text-center text-[#023E8A]">Nicole Vitória</h3>
+        <p class="text-center text-blue-700">Back-end</p>
+      </article>
+
+      <article class="card p-6 bg-white rounded-2xl border-2 cursor-pointer devops relative"
+        data-name="Ana Caroline" data-role="DevOps" data-linkedin="https://www.linkedin.com/in/ana-caroline-b-2990ba330?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" data-instagram="https://www.instagram.com/_carzl?igsh=eWZtN3diYTQ3aTRn&utm_source=qr">
+        <img src="img/ana.jpeg" class="w-40 h-40 object-cover mx-auto rounded-full mb-3">
+        <h3 class="text-xl font-semibold text-center text-[#023E8A]">Ana Caroline</h3>
+        <p class="text-center text-blue-700">DevOps</p>
+      </article>
+
+      <article class="card p-6 bg-white rounded-2xl border-2 cursor-pointer devops relative"
+        data-name="Emilly" data-role="DevOps" data-linkedin="https://www.linkedin.com/in/emilly-moraes-29175637b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" data-instagram=" https://www.instagram.com/eearaujo__?igsh=ZnZjczZhc3FiMTEx">
+        <img src="img/emilly.jpeg" class="w-40 h-40 object-cover mx-auto rounded-full mb-3">
+        <h3 class="text-xl font-semibold text-center text-[#023E8A]">Emilly</h3>
+        <p class="text-center text-blue-700">DevOps</p>
+      </article>
+
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div id="modal" class="fixed inset-0 hidden flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="bg-white p-6 rounded-2xl w-full max-w-md">
+      <button id="closeBtn" class="float-right text-gray-700">✕</button>
+      <img id="modalImg" class="w-40 h-40 rounded-full mx-auto mb-4 object-cover">
+      <h3 id="modalName" class="text-2xl text-center font-bold text-[#023E8A]"></h3>
+      <p id="modalRole" class="text-center text-gray-700 mb-4"></p>
+
+      <a id="lnkLinkedin" target="_blank" class="block w-full text-center py-2 rounded-lg mb-2 text-white">LinkedIn</a>
+      <a id="lnkInstagram" target="_blank" class="block w-full text-center bg-pink-500 text-white py-2 rounded-lg">Instagram</a>
+    </div>
+  </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const drawer = document.getElementById('drawer');
+  const openMenu = document.getElementById('openMenu');
+  const closeMenu = document.getElementById('closeMenu');
+  const filterBtns = [...document.querySelectorAll('.filter-btn')];
+  const cards = [...document.querySelectorAll('#teamGrid .card')];
+
+  const modal = document.getElementById('modal');
+  const modalImg = document.getElementById('modalImg');
+  const modalName = document.getElementById('modalName');
+  const modalRole = document.getElementById('modalRole');
+  const lnkLinkedin = document.getElementById('lnkLinkedin');
+  const lnkInstagram = document.getElementById('lnkInstagram');
+  const closeBtn = document.getElementById('closeBtn');
+
+  openMenu?.addEventListener('click', () => drawer.classList.remove('hidden'));
+  closeMenu?.addEventListener('click', () => drawer.classList.add('hidden'));
+
+  drawer?.addEventListener('click', e => {
+    if (e.target === drawer) drawer.classList.add('hidden');
+  });
+
+  function applyFilter(f) {
+    cards.forEach(c => {
+      c.style.display = (f === 'geral' || c.classList.contains(f)) ? 'block' : 'none';
+    });
+  }
+
+  applyFilter('geral');
+
+  filterBtns.forEach(btn => btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('bg-blue-700'));
+    btn.classList.add('bg-blue-700');
+    applyFilter(btn.dataset.filter);
+    drawer.classList.add('hidden');
+  }));
+
+  cards.forEach(card => card.addEventListener('click', () => {
+    modalImg.src = card.querySelector('img').src;
+    modalName.textContent = card.dataset.name;
+    modalRole.textContent = card.dataset.role;
+
+    // Ajuste para Nicole mostrar GitHub
+    if(card.dataset.name === "Nicole Vitória") {
+      lnkLinkedin.href = card.dataset.linkedin;
+      lnkLinkedin.textContent = "GitHub";
+      lnkLinkedin.classList.remove("bg-blue-700");
+      lnkLinkedin.classList.add("bg-black");
+    } else {
+      lnkLinkedin.href = card.dataset.linkedin;
+      lnkLinkedin.textContent = "LinkedIn";
+      lnkLinkedin.classList.remove("bg-black");
+      lnkLinkedin.classList.add("bg-blue-700");
+    }
+
+    lnkInstagram.href = card.dataset.instagram;
+    modal.classList.remove('hidden');
+  }));
+
+  closeBtn.onclick = () => modal.classList.add('hidden');
+  modal.onclick = e => { if (e.target === modal) modal.classList.add('hidden'); };
+});
+</script>
+
+</body>
+</html>
